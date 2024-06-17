@@ -1,0 +1,69 @@
+# Yessenia Gaspar
+# Module 3: Lab
+# 30746 CIS129
+#Create and interactive text based Coffee Shop simulator that calculates and produces a receipt.
+
+
+#create coffee, muffin, and tax variables
+coffeePrice = 5
+matchaPrice = 2
+muffinPrice = 4
+cakePrice = 1
+taxPercent = 0.06
+
+#entry input introduction - for customer raport
+print('******************************************************')
+print('Thank you for visiting Three Thrones Coffee and Pasteries Shop! \n')
+
+
+#request and obtain customer input
+coffeeOrders = int(input('How many coffees did you purchase?\n'))
+matchaOrders = int(input('How many matcha teas did you purchase?\n'))
+cakeOrders = int(input('How many cake pops did you purchase?\n'))
+muffinOrders = int(input('How many muffins did you purchase?\n'))
+
+print('\nGreat! You ordered items', coffeeOrders+matchaOrders+muffinOrders+cakeOrders,' today!: \n'
+      , coffeeOrders, 'coffee(s),\n'
+      , matchaOrders, 'matcha tea(s),\n'
+      , muffinOrders, 'muffin(s).\n'
+      , 'and',cakeOrders, 'cake pop(s)!')
+print('\n******************************************************')
+print('\n******************************************************')
+
+
+
+#Complete the receipt portion of the code.
+#Add the coffee amounts and muffin total amount, then charge tax
+#Coffee is $5.00 each
+#Matcha Tea is $2.00 each
+#Muffin is $4.00 each
+#Cake Pops are $1.00 each
+#Tax is 6%
+
+print('\nThree Thrones Coffee and Pasteries Shop Receipt') 
+print('\nCoffee at $5 each: $', coffeeOrders*coffeePrice, 
+      '\nMatcha Tea at $2 each: $', matchaOrders*matchaPrice,
+     '\nMuffins at $4 each: $', muffinOrders*muffinPrice,
+     '\nCake Pops at $1 each: $', cakeOrders*cakePrice,)
+
+foodOrder = (coffeeOrders*coffeePrice)+(matchaOrders*matchaPrice)+(muffinOrders*muffinPrice)+(cakeOrders*cakePrice)
+foodOrder = int(foodOrder)
+
+print('6% tax: $', round(taxPercent * foodOrder, 2) )
+taxTotal = taxPercent * foodOrder
+taxTotal = float(taxTotal)
+
+
+#Calculate complete total
+#add the foodOrder with taxes
+print('-----------')
+print('Total: $', foodOrder + taxTotal )
+print('\n******************************************************')
+print('Thank you and have a great day!\nPlease fill out our survey for a chance to win a $50 Coffee Shop gift card!\nJust call 867-5309 and answer a few questions about your visit.',)
+
+#End of receipt lab
+Thank you and have a great day!
+Please fill out our survey for a chance to win a $50 Coffee Shop gift card!
+Just call 867-5309 and answer a few questions about your visit.
+ 
+ 
