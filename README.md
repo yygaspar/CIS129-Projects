@@ -1,2 +1,2 @@
 # CIS129-Projects
-CIS129 - Projects. Created during Module 2.
+CIS129 - Projects. Created during CIS129
