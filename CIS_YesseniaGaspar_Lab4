@@ -1,0 +1,46 @@
+#CIS_YesseniaGaspar_Lab4
+#Yessenia Gaspar
+#Module 4 Lab 4
+#06/17/2024
+
+#Create a program, calculate store and employee bonuses based on monthly sotre sales.
+
+#declare variables needed
+storeAmount = 0
+empAmount = 0
+salesIncrease = 0
+
+monthlySales = float(input("What were the monthly sales?"))
+
+if monthlySales >= 110000:
+                    storeAmount = 6000
+elif monthlySales >= 1000000:
+                    storeAmount = 5000
+elif monthlySales >= 90000:
+                    storeAmount = 4000
+elif monthlySales >= 80000:
+                    storeAmount = 3000
+
+else:
+                    storeAmount = 0
+
+#input sales increase
+salePercent = float(input("What was the sale increase (in %)?"))
+saleIncrease = salePercent / 100
+
+#calculate employee bonuses
+if salesIncrease >= 0.05:
+                    empAmount = 75
+elif salesIncrease >= 0.04:
+                    empAmount = 50
+elif salesIncrease >= 0.03:
+                    empAmount = 40
+else:
+                    empAmount = 0
+
+
+#Print the calculations
+print("The store bonus amount is $", storeAmount)
+print("The employee bonus amount is $", empAmount)
+if (storeAmount == 6000) and (empAmount == 75):
+                    print("Congratulations! You have reached the highest bonus amounts possible!")
