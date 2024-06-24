@@ -1,0 +1,66 @@
+"""
+
+Yessenia Gaspar
+CIS129 
+Module 6 Lab
+06/24/2024
+
+Hotdog Cookout Lab:
+    Calculate the number of hotdogs and the number of buns required for a cookout. This code must also have the minimum
+    amount of leftover ingredients. Input required for number of guests and the amount of hotdogs each guest will have.
+
+"""
+
+# Declare and initialize global variable
+totalHotDogs = 0
+
+def main():
+    totalHotDogs = getTotalHotDogs()
+    showResults (totalHotDogs)
+
+# Define total hot dogs
+def getTotalHotDogs():
+    
+    #initialize variables
+    attendees = 0
+    hotDogs = 0
+
+    #input prompts
+    attendees = int(input('What is the maximum number of attendees for the cookout? '))
+    hotDogs = int(input('What is tthe number of hotdogs each person will be given? '))
+
+    #calculate total amount of hot dogs for the guests
+    total = attendees * hotDogs
+    return total
+
+
+# Define calculations
+def showResults(total):
+
+    #initialize variables
+    #Dogs, there are 8 in each package
+    #Buns, there are 10 in each package
+    DOGS = 10     
+    BUNS = 8      
+    dogsLeft = 0
+    bunsLeft = 0
+    minDogs = 0
+    minBuns = 0
+
+    #calculations
+    dogsLeft = (DOGS - total % DOGS) % DOGS
+    minDogs = (total // DOGS) + (0 ** (0 ** dogsLeft))
+    bunsLeft = (BUNS - total % BUNS) % BUNS 
+    minBuns = (total // BUNS) + (0 ** (0 ** bunsLeft))
+
+    #Display: 
+        #The minimum number of packages of hot dogs required.
+        #The minimum number of packages of buns required
+        #The number of hot dogs that will be left over
+        #The number of buns that will be left over
+    print('\nMinimum packages of hot dogs needed:', minDogs)
+    print('Minimum packages of hot dog buns needed:', minBuns)
+    print('Hot dogs remaining:', dogsLeft)
+    print('Hot dog buns remaining:', bunsLeft)
+
+main()
