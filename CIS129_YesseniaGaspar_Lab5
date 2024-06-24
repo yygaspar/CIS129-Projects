@@ -1,0 +1,47 @@
+#Yessenia Gaspar
+# CIS129
+#06/23/2024
+
+#Lab 4 The Bottle Return Program
+#This lab  will excecute a program that allows input for total number of bottles, within a week, to enter.
+#Then calculate a total payout amount.
+
+
+#Step 1
+#Declare variables
+total_Bottles = 0 #store accumulated bottle values
+counter = 1 #control the loop
+today_Bottles = 0 #store the number of bottles returned on a day
+total_Payout = 0.0 #store the calculated value of totalBottles times .10
+keep_Going = "y" #used to run the program again
+
+#loop program
+while keep_Going.lower() == "y":
+    #format to reset variables each week
+    total_Bottles = 0
+    total_Payout = 0.0
+
+    #Variables for calculations added for days
+    counter = 1
+    while counter < 8:
+        today_Bottles = int(input(f'Enter number of bottles returned for the day #{counter}: '))
+        total_Bottles += today_Bottles #code to set the variable total_Bottles that contains the week total.       
+        counter = counter + 1
+        
+    #code to set total_Payout using variable total_Bottles. Returns the week total payout.
+    total_Payout = total_Bottles * .10
+
+
+    #code to print the number of total_bottles and total_payout
+    print('\nThe total number of bottles collected is ', total_Bottles)
+    print('The total paid out is $', total_Payout)
+
+    #Ask input to loop program
+    keep_Going = input("""\nDo you want to enter another week's worth of data? (Enter y or n):""")
+
+    #Insert portion of code that allows only 'y' and 'n' input
+    if keep_Going.lower() !="y" and keep_Going.lower() != "n":
+        print("\nPlease only enter 'y' or 'n'.")
+        keep_Going = input("""Do you want to enter another week's worth of data? (Enter y or n):""")
+
+print("You entered 'n', program ended. Thank you!")
