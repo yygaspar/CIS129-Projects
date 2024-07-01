@@ -1,0 +1,61 @@
+"""
+Yessenia Gaspar
+CIS129 - Module 7: Lab
+Theater Seating Lab
+
+This lab will be able to calculate the subtotal for all purchases of seats
+in a theatrical theater. The theater will have multiple sections with 
+different tickets prices per section.
+"""
+
+##define main function
+def main():
+
+    ##Welcome! You're able to add and change your section prices below.
+    ##Initialize variables 
+    ##(Sections tickets prices)
+    sectionAprice = 20
+    sectionBprice = 15
+    sectionCprice = 10   
+
+    ##Including maximum tickets per section
+    maxTicketsASection = 300
+    maxTicketsBSection = 500
+    maxTicketsCSection = 200
+
+    ##Sections
+    sectionAtickets = 0
+    sectionBtickets = 0
+    sectionCtickets = 0
+    
+    ##Ask for number of tickets sold in each section
+    ##Inputs and validation
+    print("Welcome, enter your ticket sales for your totals.")
+    while True:
+        try:
+            sectionAtickets = int(input(f"For Section A, enter number of tickets sold (max {maxTicketsASection}): "))
+            if sectionAtickets < 0 or sectionAtickets > maxTicketsASection:
+                raise ValueError()
+            sectionBtickets = int(input(f"For Section B, enter number of tickets sold (max {maxTicketsBSection}): "))
+            if sectionBtickets < 0 or sectionBtickets > maxTicketsBSection:
+                raise ValueError()
+            sectionCtickets = int(input(f"For Section C, enter number of tickets sold (max {maxTicketsCSection}): "))
+            if sectionCtickets < 0 or sectionCtickets > maxTicketsCSection:
+                raise ValueError()
+            #Break will leave loop it all inputs are valid
+            break    
+        except ValueError:
+            print(f"Invalid input. Please restart and enter a number between 0 and allowed section maximum.")
+                                  
+    ##Calculations for total revenue
+    totalRevenue = (sectionAtickets * sectionAprice) + \
+                   (sectionBtickets * sectionBprice) + \
+                   (sectionCtickets * sectionCprice)
+
+    ##Display the amount of income generated
+    print("Thank you, let's get your total revenue!")
+    print(f"Total revenue: ${totalRevenue}")
+
+if __name__ == "__main__":
+    main()
+    
