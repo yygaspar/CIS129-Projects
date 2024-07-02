@@ -1,0 +1,38 @@
+"""
+Yessenia Gaspar
+07/01/2024
+CIS129 Prog & Problem Solving
+
+Lab 8 - Palindrome Tester
+Test if a word is a palindrome
+"""
+
+##define main function, check if word is a palindrome
+def is_palindrome(string):
+    stack = []
+    
+    ## Word to stack for the character values in string
+    for character in string:
+        stack.append(character)
+        
+    ##loop with pop snippets
+    for character in string:
+        popped_character = stack.pop()
+        
+        ##Loop will compare word characters, regardless of upper or lower case when input.
+        ##This also includes integers
+        ##Compares the stack characters and then ends loop
+        if character.lower() != popped_character.lower():
+            return False   
+    
+    return True  
+
+## Prompt the user to input a word or phrase.
+print("Hello! Let's test if your word is a palindrome.")
+user_input = input('Type in the word you want to test: ')
+
+## Call the is_palindrome function and print if true or not
+if is_palindrome(user_input):
+ print('True,', user_input, 'is a palindrome.')
+else:
+ print('False,', user_input, 'is not a palindrome.')
