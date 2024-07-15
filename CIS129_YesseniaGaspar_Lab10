@@ -1,0 +1,27 @@
+"""Yessenia Gaspar
+   Module 10 Lab
+   Create a script to print a protected check format
+"""
+
+
+# Define your protected check amount
+def protect_check_amount(amount):
+    # Set a format to two decimal points
+    format_amount = f"{amount:.2f}"
+    
+    # Create snippets for asterisks
+    if len(format_amount) < 10:
+        # Calculate asterisks amount needed
+        num_asterisks = 10 - len(format_amount)
+        protected_amount = '*' * num_asterisks + format_amount
+    else:
+        protected_amount = format_amount
+    
+    return protected_amount
+    
+# print protected information with asterisks
+if __name__ == "__main__":
+    amount = float(input("Enter the paycheck amount: $"))
+    protected_amount = protect_check_amount(amount)
+    print(f"Protected paycheck amount: ${protected_amount}")
+
