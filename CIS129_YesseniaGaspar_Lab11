@@ -1,0 +1,132 @@
+"""Yessenia Gaspar
+   Module 11 Lab
+   CIS129
+   07/22/2024
+
+   Complete excercises 9.1, 9.2, and 9.3
+"""
+
+
+### 9.1 Write code that enables you to store any number of grades into a grades.txt plain text file
+
+# Input validation loop
+def get_int(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print('Invalid. Please enter a valid integer.')
+
+# Validate entered grade is within a grade range, 0 - 100. The sentinel value may also be entered: '-1'.
+def get_valid_int(prompt, min_value, max_value, sentinel_value):
+    while True:
+        value = get_int(prompt)
+        if value == sentinel_value or (min_value <= value <= max_value):
+            return value
+        else:
+            print(f'Invalid. Enter a grade between {min_value} and {max_value}.')
+
+# Initialize variables
+total = 0       # Sum of grades
+grade_counter = 0  # Number of grades entered
+
+# With statement to handle opening and closing of the grades.txt file.
+with open('grades.txt', 'w') as grades_file:
+    # Processing phase
+    grade = get_valid_int('Enter grade between 0 - 100, (-1 to end): ', -1, 100, -1)
+
+
+    #Main loop - Prompt user for grades
+    #Handles input and writing to the file more 
+    #efficiently.
+    while grade != -1:
+        total += grade
+        grade_counter += 1
+        grades_file.write(str(grade) + '\n')
+        grade = get_valid_int('Enter grade (0-100), -1 to end: ', -1, 100, -1)
+
+# Calculate class average with at least one entry.
+# Prevent division by zero errors.
+if grade_counter > 0:
+    average = total / grade_counter
+    print(f'Class average is {average:.2f}')
+else:
+    print('No grades were entered')
+
+
+
+
+
+
+### 9.2 Write code that reads the grades from the grades.txt file
+
+# Initialize variables
+# Include total, count, and grades
+total = 0
+count = 0
+grades = []
+
+# with pen the grades.txt file, 'r' mode
+with open('grades.txt', 'r') as grades_file:
+    for line in grades_file:
+        
+        # Convert the grade from string to float
+        grade = float(line.strip())
+        
+        # Add the grade to the list
+        grades.append(grade)
+        total += grade
+        count += 1
+
+# Count above 0, and calculate average
+if count > 0:
+    average = total / count
+else:
+    average = 0
+
+# Print results on new lines
+print("Individual Grades:", grades)
+print("Total:", total)
+print("Count:", count)
+print(f"Average: {average:.2f}")
+
+
+
+### 9.3 Write code that enables an instructor to enter each student's
+### first name and last name as strings and the student's three exam grades as intetgers. 
+
+
+#import Python 'csv' module
+import csv
+
+# Open file 'grades.csv' in 'w' mode
+# Prevent 'csv.writer' from adding extra newline characters between rows.
+with open('grades.csv', 'w', newline='') as csvfile:
+    
+    # Allow writing CVS format data to the csvfile
+    csvwriter = csv.writer(csvfile)
+    
+    # Infinite loop to enter student grades
+    while True:
+
+        # Input promts for student names
+        first_name = input("Enter student's first name ('-1' to end): ")
+        if first_name.lower() == '-1':
+            break
+        # Enter grades for the 3 exams
+        # Convert using 'int()' for valid numeric values
+        last_name = input("Enter student's last name: ")
+        exam1_grade = int(input("Enter exam 1 grade: "))
+        exam2_grade = int(input("Enter exam 2 grade: "))
+        exam3_grade = int(input("Enter exam 3 grade: "))
+        
+        # Writes record to the 'grades.csv' file.
+        csvwriter.writerow([first_name, last_name, exam1_grade, exam2_grade, exam3_grade])
+        
+        # Prompt to enter more student grades
+        more_grades = input("Enter more student grades? (yes/no): ")
+        if more_grades.lower() != 'yes':
+            break
+
+#Print confimation
+print("Student records have been written to grades.csv. Operation complete.")
